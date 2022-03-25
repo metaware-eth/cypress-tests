@@ -45,6 +45,6 @@ describe('cypress assessment dashboard tests', () => {
                })
               .then(() => expect(values).to.deep.eq(
                   ["1", "Jon doe", "jhondoe@example.com", "2021-1-12", "Edit", "Delete", "1", "Jon doe", "jhondoe@example.com", "2021-1-12", "Edit", "Delete", "1", "Jon doe", "jhondoe@example.com", "2021-1-12", "Edit", "Delete"]))
-    })    
+    })
   })
   
