@@ -4,12 +4,11 @@ require('cypress-xpath')
 
 describe('cypress assessment login tests', () => {
     beforeEach(() => {
-      // Visit the homepage
+      // Nav to homepage
       cy.visit('http://localhost:3000/')
     })
   
     it('valid login', () => {
-        cy.location('pathname').should('eq', '/')
         // Enter credentials
         cy.get('#email').type('me@example.com').should('have.value', 'me@example.com')
         cy.get('#password').type('password').should('have.value', 'password')
@@ -71,5 +70,37 @@ describe('cypress assessment login tests', () => {
         // Verify correct page
         cy.location('pathname').should('eq', '/')
     })
+
+    it('missing email field error state', () => {
+        // Enter password
+        cy.get('#password').type('EXAMPLE').should('have.value', 'EXAMPLE')
+
+        // Click 'Sign in'
+        cy.xpath('//*[@id="__next"]/div/div[2]/div/form/div[4]/button').click()
+
+        // Verify error text
+        cy.get('#email-error').invoke('text').then((text) => {
+            expect(text.trim()).equal('Email is required')
+        })
+
+        // Verify correct page
+        cy.location('pathname').should('eq', '/')
+    })
+    
+    it('missing password field error state', () => {
+        // Enter password
+        cy.get('#email').type('EXAMPLE').should('have.value', 'EXAMPLE')
+
+        // Click 'Sign in'
+        cy.xpath('//*[@id="__next"]/div/div[2]/div/form/div[4]/button').click()
+
+        // Verify error text
+        cy.get('#password-error').invoke('text').then((text) => {
+            expect(text.trim()).equal('Password is required')
+        })
+
+        // Verify correct page
+        cy.location('pathname').should('eq', '/')
+    })    
   })
   
