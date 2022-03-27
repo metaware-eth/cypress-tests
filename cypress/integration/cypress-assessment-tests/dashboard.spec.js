@@ -1,14 +1,14 @@
 /// <reference types="cypress" />
 require('cypress-xpath')
-
+var dashboard = require("../../fixtures/dashboard")
+var login = require("../../fixtures/login")
 
 describe('cypress assessment dashboard tests', () => {
     beforeEach(() => {
-        // Assume successful login
         cy.visit('http://localhost:3000/')
 
-        cy.get('#email').type('me@example.com').should('have.value', 'me@example.com')
-        cy.get('#password').type('password').should('have.value', 'password')
+        cy.get('#email').type(login.credentials.email).should('have.value', login.credentials.email)
+        cy.get('#password').type(login.credentials.password).should('have.value', login.credentials.password)
 
         cy.xpath('//*[@id="__next"]/div/div[2]/div/form/div[4]/button').click()
 
@@ -28,7 +28,7 @@ describe('cypress assessment dashboard tests', () => {
                   })
                })
               .then(() => expect(values).to.deep.eq(
-                  ["ID", "Name", "Email", "Created_at", "Edit", "Delete"]))
+                  dashboard.headers))
     })
 
     it('table data items exists', () => {
@@ -44,7 +44,7 @@ describe('cypress assessment dashboard tests', () => {
                   })
                })
               .then(() => expect(values).to.deep.eq(
-                  ["1", "Jon doe", "jhondoe@example.com", "2021-1-12", "Edit", "Delete", "1", "Jon doe", "jhondoe@example.com", "2021-1-12", "Edit", "Delete", "1", "Jon doe", "jhondoe@example.com", "2021-1-12", "Edit", "Delete"]))
+                  dashboard.data))
     })
   })
   

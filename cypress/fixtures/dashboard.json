@@ -1,0 +1,4 @@
+{
+    "headers": ["ID", "Name", "Email", "Created_at", "Edit", "Delete"],
+    "data": ["1", "Jon doe", "jhondoe@example.com", "2021-1-12", "Edit", "Delete", "1", "Jon doe", "jhondoe@example.com", "2021-1-12", "Edit", "Delete", "1", "Jon doe", "jhondoe@example.com", "2021-1-12", "Edit", "Delete"]
+}

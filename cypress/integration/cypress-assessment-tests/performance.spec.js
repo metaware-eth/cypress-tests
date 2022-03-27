@@ -2,7 +2,7 @@
 require('cypress-xpath')
 
 
-describe('cypress assessment dashboard tests', () => {
+describe('cypress assessment performance tests', () => {
   
     it('home page content load', () => {
         cy.visit('http://localhost:3000/', {
