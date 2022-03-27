@@ -1,0 +1,15 @@
+{
+  "credentials":
+  {
+    "email": "me@example.com",
+    "password": "password",
+    "invalid_email": "INVALID_EMAIL",
+    "invalid_password": "INVALID PASSWORD"
+  },
+  "errors":
+  {
+    "invalid_credentials": "Invalid email or password",
+    "missing_email": "Email is required",
+    "missing_password": "Password is required"
+  }
+}
