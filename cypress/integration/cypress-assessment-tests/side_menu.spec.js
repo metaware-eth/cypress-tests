@@ -1,14 +1,14 @@
 /// <reference types="cypress" />
 require('cypress-xpath')
-
+var login = require("../../fixtures/login")
 
 describe('cypress assessment side menu tests', () => {
     beforeEach(() => {
         // Assume successful login
         cy.visit('http://localhost:3000/')
 
-        cy.get('#email').type('me@example.com').should('have.value', 'me@example.com')
-        cy.get('#password').type('password').should('have.value', 'password')
+        cy.get('#email').type(login.credentials.email).should('have.value', login.credentials.email)
+        cy.get('#password').type(login.credentials.password).should('have.value', login.credentials.password)
 
         cy.xpath('//*[@id="__next"]/div/div[2]/div/form/div[4]/button').click()
 
@@ -52,8 +52,12 @@ describe('cypress assessment side menu tests', () => {
 
     it('logo item exists', () => {
         // Check element, src, and alt
-        cy.xpath('//*[@id="__next"]/div/div[1]/div/img').should('have.attr', 'src').should('include','tailwindui.com/img/logos/workflow-mark-indigo-600.svg')
-        cy.xpath('//*[@id="__next"]/div/div[1]/div/img').should('have.attr', 'alt').should('include','Workflow')
+        cy.xpath('//*[@id="__next"]/div/div[1]/div/img')
+            .should('have.attr', 'src')
+            .should('include','tailwindui.com/img/logos/workflow-mark-indigo-600.svg')
+        cy.xpath('//*[@id="__next"]/div/div[1]/div/img')
+            .should('have.attr', 'alt')
+            .should('include','Workflow')
     })    
   })
   
